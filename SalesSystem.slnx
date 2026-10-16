@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <File Path=".env" />
+    <File Path="docker-compose.yml" />
+    <Project Path="sales system/SalesSystem.Api.csproj" />
+    <Project Path="SalesSystem.Core/SalesSystem.Core.csproj" Id="16fe1c23-d1a1-4d91-acde-9d6a3fedd2db" />
+    <Project Path="SalesSystem.Infra/SalesSystem.Infra.csproj" Id="56f22b17-d863-42fd-a324-76b17582211a" />
+    <Project Path="SalesSytem.Application/SalesSytem.Application.csproj" Id="31bac80f-5a0b-4f9d-9971-2afacab52847" />
+  </Folder>
+</Solution>
