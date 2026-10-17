@@ -10,3 +10,19 @@ C:\Users\Mateus Bacelar\source\repos\sales system\SalesSytem.Application\obj\Deb
 C:\Users\Mateus Bacelar\source\repos\sales system\SalesSytem.Application\obj\Debug\net10.0\SalesSytem.Application.pdb
 C:\Users\Mateus Bacelar\source\repos\sales system\SalesSytem.Application\obj\Debug\net10.0\ref\SalesSytem.Application.dll
 C:\Users\Mateus Bacelar\source\repos\sales system\SalesSytem.Application\obj\Debug\net10.0\SalesSyt.D5B2A802.Up2Date
+C:\Users\Mateus Bacelar\Documents\repos\SalesSystem\SalesSytem.Application\obj\Debug\net10.0\SalesSytem.Application.csproj.AssemblyReference.cache
+C:\Users\Mateus Bacelar\Documents\repos\SalesSystem\SalesSytem.Application\obj\Debug\net10.0\SalesSytem.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mateus Bacelar\Documents\repos\SalesSystem\SalesSytem.Application\obj\Debug\net10.0\SalesSytem.Application.AssemblyInfoInputs.cache
+C:\Users\Mateus Bacelar\Documents\repos\SalesSystem\SalesSytem.Application\obj\Debug\net10.0\SalesSytem.Application.AssemblyInfo.cs
+C:\Users\Mateus Bacelar\Documents\repos\SalesSystem\SalesSytem.Application\obj\Debug\net10.0\SalesSytem.Application.csproj.CoreCompileInputs.cache
+C:\Users\Mateus Bacelar\Documents\repos\SalesSystem\SalesSytem.Application\obj\Debug\net10.0\SalesSytem.Application.sourcelink.json
+C:\Users\Mateus Bacelar\Documents\repos\SalesSystem\SalesSytem.Application\obj\Debug\net10.0\SalesSytem.Application.dll
+C:\Users\Mateus Bacelar\Documents\repos\SalesSystem\SalesSytem.Application\obj\Debug\net10.0\refint\SalesSytem.Application.dll
+C:\Users\Mateus Bacelar\Documents\repos\SalesSystem\SalesSytem.Application\obj\Debug\net10.0\SalesSytem.Application.pdb
+C:\Users\Mateus Bacelar\Documents\repos\SalesSystem\SalesSytem.Application\bin\Debug\net10.0\SalesSytem.Application.deps.json
+C:\Users\Mateus Bacelar\Documents\repos\SalesSystem\SalesSytem.Application\bin\Debug\net10.0\SalesSytem.Application.dll
+C:\Users\Mateus Bacelar\Documents\repos\SalesSystem\SalesSytem.Application\bin\Debug\net10.0\SalesSytem.Application.pdb
+C:\Users\Mateus Bacelar\Documents\repos\SalesSystem\SalesSytem.Application\bin\Debug\net10.0\SalesSystem.Core.dll
+C:\Users\Mateus Bacelar\Documents\repos\SalesSystem\SalesSytem.Application\bin\Debug\net10.0\SalesSystem.Core.pdb
+C:\Users\Mateus Bacelar\Documents\repos\SalesSystem\SalesSytem.Application\obj\Debug\net10.0\SalesSyt.D5B2A802.Up2Date
+C:\Users\Mateus Bacelar\Documents\repos\SalesSystem\SalesSytem.Application\obj\Debug\net10.0\ref\SalesSytem.Application.dll

@@ -1,8 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "/kP/pbTb16Q=",
+  "dgSpecHash": "8iIB7/fUDVY=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Mateus Bacelar\\source\\repos\\sales system\\SalesSytem.Application\\SalesSytem.Application.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\Mateus Bacelar\\Documents\\repos\\SalesSystem\\SalesSytem.Application\\SalesSytem.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Mateus Bacelar\\.nuget\\packages\\fluentvalidation\\12.2.0\\fluentvalidation.12.2.0.nupkg.sha512",
+    "C:\\Users\\Mateus Bacelar\\.nuget\\packages\\mapster\\10.0.13\\mapster.10.0.13.nupkg.sha512",
+    "C:\\Users\\Mateus Bacelar\\.nuget\\packages\\mapster.core\\10.0.13\\mapster.core.10.0.13.nupkg.sha512",
+    "C:\\Users\\Mateus Bacelar\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\10.0.13\\microsoft.extensions.configuration.abstractions.10.0.13.nupkg.sha512",
+    "C:\\Users\\Mateus Bacelar\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.13\\microsoft.extensions.dependencyinjection.abstractions.10.0.13.nupkg.sha512",
+    "C:\\Users\\Mateus Bacelar\\.nuget\\packages\\microsoft.extensions.primitives\\10.0.13\\microsoft.extensions.primitives.10.0.13.nupkg.sha512"
+  ],
   "logs": []
 }

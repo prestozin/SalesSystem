@@ -1,29 +1,26 @@
+using sales_system.Configurations;
 using SalesSystem.Infra.Configuration;
+using SalesSytem.Application.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
-builder.Services.AddOpenApi();
-
-//Application and Infra services
-
+builder.Services.AddApiServices();
+builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 
-
-
-app.MapGet("/health", () => Results.Ok("Healthy"));
-
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+app.MapGet("/health", () => Results.Ok("Healthy"));
 app.MapControllers();
 
 app.Run();
