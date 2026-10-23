@@ -49,14 +49,25 @@ public class ProductsController(IProductService productService) : ControllerBase
         return Ok(result);
     }
 
-    [HttpPatch("{id}/deactivate")]
-    public async Task<IActionResult> Deactivate(int id)
+    [HttpPatch("{id}/toggleStatus")]
+    public async Task<IActionResult> ToggleStatus(int id)
     {
-        var result = await productService.DeactivateAsync(id);
+        var result = await productService.ToggleStatusAsync(id);
 
         if (!result.IsSuccess)
             return NotFound(result);
         
+        return Ok(result);
+    }
+
+    [HttpPatch("{id}/restock")]
+    public async Task<IActionResult> Restock(int id, RestockProductRequest request)
+    {
+        var result = await productService.RestockAsync(id, request);
+
+        if (!result.IsSuccess)
+            return BadRequest(result);
+
         return Ok(result);
     }
 }

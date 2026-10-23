@@ -8,6 +8,7 @@ using SalesSystem.Core.Interfaces;
 using SalesSytem.Application.DTOs.Product.Request;
 using SalesSytem.Application.DTOs.Product.Response;
 using SalesSytem.Application.Interfaces;
+using SalesSytem.Application.Validators.Products;
 using TaskManager.Application.DTOs;
 
 namespace SalesSytem.Application.Services;
@@ -50,7 +51,7 @@ public class ProductService : IProductService
     public async Task<ResultResponse<ProductResponse>> GetByIdAsync(int id)
     {
         if (id <= 0)
-            return ResultResponse<ProductResponse>.Failure(Messages.INVALID_PRODUCT_ID);
+            return ResultResponse<ProductResponse>.Failure(Messages.PRODUCT_INVALID_ID);
 
         Product? product = await _productRepository.GetByIdAsync(id);
 
@@ -65,7 +66,7 @@ public class ProductService : IProductService
     public async Task<ResultResponse<ProductResponse>> UpdateAsync(int id, UpdateProductRequest request)
     {
         if (id <= 0)
-            return ResultResponse<ProductResponse>.Failure(Messages.INVALID_PRODUCT_ID);
+            return ResultResponse<ProductResponse>.Failure(Messages.PRODUCT_INVALID_ID);
 
         Product? product = await _productRepository.GetByIdAsync(id);
 
@@ -92,20 +93,40 @@ public class ProductService : IProductService
         return ResultResponse<ProductResponse>.Success(response);
     }
 
-    public async Task<ResultResponse<ProductResponse>> DeactivateAsync(int id)
+    public async Task<ResultResponse<ProductResponse>> ToggleStatusAsync(int id)
     {
         if (id <= 0)
-            return ResultResponse<ProductResponse>.Failure(Messages.INVALID_PRODUCT_ID);
+            return ResultResponse<ProductResponse>.Failure(Messages.PRODUCT_INVALID_ID);
 
         Product? product = await _productRepository.GetByIdAsync(id);
 
         if (product == null)
             return ResultResponse<ProductResponse>.Failure(Messages.PRODUCT_NOT_FOUND);
 
-        if (!product.IsActive)
-            return ResultResponse<ProductResponse>.Failure(Messages.PRODUCT_ALREADY_DEACTIVATED);
+        product.IsActive = !product.IsActive;
+        product.UpdatedAt = DateTime.UtcNow;
 
-        product.IsActive = false;
+        await _productRepository.UpdateAsync(product);
+
+        ProductResponse response = product.Adapt<ProductResponse>();
+
+        return ResultResponse<ProductResponse>.Success(response);
+    }
+
+    public async Task<ResultResponse<ProductResponse>> RestockAsync(int id, RestockProductRequest request)
+    {
+        if (id <= 0)
+            return ResultResponse<ProductResponse>.Failure(Messages.PRODUCT_INVALID_ID);
+
+        RestockProductValidator validator = new RestockProductValidator();
+        await validator.ValidateAndThrowAsync(request);
+
+        Product? product = await _productRepository.GetByIdAsync(id);
+
+        if (product == null)
+            return ResultResponse<ProductResponse>.Failure(Messages.PRODUCT_NOT_FOUND);
+
+        product.StockQuantity += request.Quantity;
         product.UpdatedAt = DateTime.UtcNow;
 
         await _productRepository.UpdateAsync(product);

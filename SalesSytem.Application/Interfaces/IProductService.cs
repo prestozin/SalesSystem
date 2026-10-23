@@ -10,5 +10,6 @@ public interface IProductService
     Task<ResultResponse<List<ProductResponse>>> GetAllAsync();
     Task<ResultResponse<ProductResponse>> GetByIdAsync(int id);
     Task<ResultResponse<ProductResponse>> UpdateAsync(int id, UpdateProductRequest request);
-    Task<ResultResponse<ProductResponse>> DeactivateAsync(int id);
+    Task<ResultResponse<ProductResponse>> ToggleStatusAsync(int id);
+    Task<ResultResponse<ProductResponse>> RestockAsync(int id, RestockProductRequest request);
 }

@@ -36,4 +36,11 @@ public class ProductRepository : IProductRepository
         _context.Products.Update(product);
         await _context.SaveChangesAsync();
     }
+
+    public async Task<List<Product>> GetByIdsAsync(List<int> ids)
+    {
+        return await _context.Products
+            .Where(product => ids.Contains(product.Id))
+            .ToListAsync();
+    }
 }

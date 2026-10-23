@@ -12,9 +12,11 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddApplication(this IServiceCollection services)
     {
         services.AddScoped<IProductService, ProductService>();
+        services.AddScoped<IOrderService, OrderService>();
 
         TypeAdapterConfig config = TypeAdapterConfig.GlobalSettings;
         config.Scan(typeof(ProductMapping).Assembly);
+        config.Scan(typeof(OrderMapping).Assembly);
 
         return services;
     }

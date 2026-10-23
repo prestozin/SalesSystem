@@ -13,6 +13,7 @@ public static class ServiceCollectionExtensions
     {
 
         services.AddScoped<IProductRepository, ProductRepository>();
+        services.AddScoped<IOrderRepository, OrderRepository>();
 
         services.AddDbContext<ApplicationDbContext>(options =>
         {
