@@ -9,4 +9,6 @@ public interface IProductService
     Task<ResultResponse<ProductResponse>> CreateAsync(CreateProductRequest request);
     Task<ResultResponse<List<ProductResponse>>> GetAllAsync();
     Task<ResultResponse<ProductResponse>> GetByIdAsync(int id);
+    Task<ResultResponse<ProductResponse>> UpdateAsync(int id, UpdateProductRequest request);
+    Task<ResultResponse<ProductResponse>> DeactivateAsync(int id);
 }

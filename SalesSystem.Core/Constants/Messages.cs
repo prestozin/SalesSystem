@@ -16,4 +16,8 @@ public class Messages
     public const string PRODUCT_PRICE_INVALID = "O preço do produto deve ser maior que zero.";
     public const string PRODUCT_STOCK_QUANTITY_INVALID = "A quantidade em estoque não pode ser negativa.";
     public const string PRODUCT_IMAGE_URL_MAX_LENGTH = "A URL da imagem deve ter no máximo 2048 caracteres.";
+    public const string PRODUCT_RETRIEVED_SUCCESSFULLY = "Produto encontrado com sucesso.";
+    public const string PRODUCT_DEACTIVATED_SUCCESSFULLY = "Produto desativado com sucesso.";
+    public const string PRODUCT_ALREADY_DEACTIVATED = "O produto já está desativado.";
+    public const string PRODUCT_STOCK_LESS_THAN_RESERVED = "O estoque não pode ser menor que a quantidade reservada.";
 }

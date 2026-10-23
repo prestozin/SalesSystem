@@ -8,7 +8,7 @@ namespace SalesSystem.Api.Controllers;
 [Route("api/[controller]")]
 public class ProductsController(IProductService productService) : ControllerBase
 {
-    [HttpGet]
+    [HttpGet("list")]
     public async Task<IActionResult> GetAll()
     {
         var result = await productService.GetAllAsync();
@@ -16,7 +16,7 @@ public class ProductsController(IProductService productService) : ControllerBase
         return Ok(result);
     }
 
-    [HttpGet("{id:int}")]
+    [HttpGet("{id}/get")]
     public async Task<IActionResult> GetById(int id)
     {
         var result = await productService.GetByIdAsync(id);
@@ -27,7 +27,7 @@ public class ProductsController(IProductService productService) : ControllerBase
         return Ok(result);
     }
 
-    [HttpPost]
+    [HttpPost("create")]
     public async Task<IActionResult> Create([FromBody] CreateProductRequest request)
     {
         var result = await productService.CreateAsync(request);
@@ -36,5 +36,27 @@ public class ProductsController(IProductService productService) : ControllerBase
             return BadRequest(result);
 
         return StatusCode(StatusCodes.Status201Created, result);
+    }
+
+    [HttpPut("{id}/update")]
+    public async Task<IActionResult> Update(int id, [FromBody] UpdateProductRequest request)
+    {
+        var result = await productService.UpdateAsync(id, request);
+
+        if (!result.IsSuccess)
+            return NotFound(result);
+     
+        return Ok(result);
+    }
+
+    [HttpPatch("{id}/deactivate")]
+    public async Task<IActionResult> Deactivate(int id)
+    {
+        var result = await productService.DeactivateAsync(id);
+
+        if (!result.IsSuccess)
+            return NotFound(result);
+        
+        return Ok(result);
     }
 }
