@@ -6,9 +6,9 @@ public class OrderItem
 {
     public int Id { get; set; }
     public int OrderId { get; set; }
-
     public int ProductId { get; set; }
     public int Quantity { get; set; }
+
 
     [Column(TypeName = "decimal(11,2)")]
     public decimal UnitPrice { get; set; }

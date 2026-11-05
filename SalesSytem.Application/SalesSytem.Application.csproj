@@ -17,4 +17,8 @@
     <ProjectReference Include="..\SalesSystem.Core\SalesSystem.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DTOs\User\Response\" />
+  </ItemGroup>
+
 </Project>

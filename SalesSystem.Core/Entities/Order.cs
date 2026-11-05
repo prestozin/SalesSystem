@@ -6,6 +6,7 @@ public class Order
 {
     public int Id { get; set; }
     public int StatusId { get; set; }
+    public Guid UserId { get; set; }
 
     [Column(TypeName = "decimal(11,2)")]
     public decimal Total { get; set; }
@@ -13,6 +14,7 @@ public class Order
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     public DateTime? UpdatedAt { get; set; }
 
+    public User User { get; set; } = null!;
     public OrderStatus Status { get; set; } = null!;
 
     public ICollection<OrderItem> Items { get; set; } = new List<OrderItem>();
