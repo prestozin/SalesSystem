@@ -5,6 +5,7 @@ using SalesSystem.Application.Validators.Products;
 using SalesSystem.Core.Constants;
 using SalesSystem.Core.Entities;
 using SalesSystem.Core.Interfaces;
+using SalesSystem.Core.Shared;
 using SalesSytem.Application.DTOs.Product.Request;
 using SalesSytem.Application.DTOs.Product.Response;
 using SalesSytem.Application.Interfaces;
@@ -38,16 +39,6 @@ public class ProductService : IProductService
 
         return ResultResponse<ProductResponse>.Success(response);
     }
-
-    public async Task<ResultResponse<List<ProductResponse>>> GetAllAsync()
-    {
-        List<Product> products = await _productRepository.GetAllAsync();
-
-        List<ProductResponse> responses = products.Adapt<List<ProductResponse>>();
-
-        return ResultResponse<List<ProductResponse>>.Success(responses);
-    }
-
     public async Task<ResultResponse<ProductResponse>> GetByIdAsync(int id)
     {
         if (id <= 0)
@@ -134,5 +125,16 @@ public class ProductService : IProductService
         ProductResponse response = product.Adapt<ProductResponse>();
 
         return ResultResponse<ProductResponse>.Success(response);
+    }
+
+    public async Task<ResultResponse<PagedResponse<ProductResponse>>> GetPagedAsync(ProductPagedRequest pagedParams)
+    {
+        var (products, totalCount) = await _productRepository.GetPagedAsync(pagedParams);
+
+        IEnumerable<ProductResponse> items = products.Adapt<IEnumerable<ProductResponse>>();
+
+        PagedResponse<ProductResponse> response = new(items, pagedParams.PageNumber, pagedParams.PageSize, totalCount);
+
+        return ResultResponse<PagedResponse<ProductResponse>>.Success(response);
     }
 }

@@ -4,6 +4,7 @@ using SalesSystem.Core.Constants;
 using SalesSystem.Core.Entities;
 using SalesSystem.Core.Enums;
 using SalesSystem.Core.Interfaces;
+using SalesSystem.Core.Shared;
 using SalesSytem.Application.DTOs.Order.Request;
 using SalesSytem.Application.DTOs.Order.Response;
 using SalesSytem.Application.Interfaces;
@@ -85,5 +86,16 @@ public class OrderService : IOrderService
         order.Total = order.Items.Sum(item => item.Quantity * item.UnitPrice);
 
         return order;
+    }
+
+    public async Task<ResultResponse<PagedResponse<OrderResponse>>> GetPagedAsync(Guid userId, OrderPagedRequest pagedParams)
+    {
+        var (orders, totalCount) = await _orderRepository.GetPagedAsync(userId, pagedParams);
+
+        IEnumerable<OrderResponse> items = orders.Adapt<IEnumerable<OrderResponse>>();
+
+        PagedResponse<OrderResponse> response = new(items, pagedParams.PageNumber, pagedParams.PageSize, totalCount);
+
+        return ResultResponse<PagedResponse<OrderResponse>>.Success(response);
     }
 }

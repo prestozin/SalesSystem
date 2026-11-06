@@ -1,14 +1,11 @@
 ﻿namespace SalesSystem.Core.Shared;
 
 using SalesSystem.Core.Constants;
-
-
-public class ProductPagedParamsRequest : PagedParamsRequest
+public class OrderPagedRequest : PagedRequest
 {
-    public string? Search { get; set; }
-    public bool? IsActive { get; set; }
+    public string? Status { get; set; }
 
-    public ProductPagedParamsRequest()
+    public OrderPagedRequest()
     {
         Sort = Constants.DEFAULT_SORT_VALUE;
         Order = Constants.DEFAULT_ORDER_VALUE;

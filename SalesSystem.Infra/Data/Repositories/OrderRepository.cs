@@ -29,7 +29,7 @@ public class OrderRepository : BaseRepository<Order>, IOrderRepository
         await transaction.CommitAsync();
     }
 
-    public async Task<(IEnumerable<Order> orders, int totalCount)> GetPagedAsync(Guid userId, OrderPagedParamsRequest pagedParams)
+    public async Task<(IEnumerable<Order> orders, int totalCount)> GetPagedAsync(Guid userId, OrderPagedRequest pagedParams)
     {
         IQueryable<Order> query = _context.Orders
             .AsNoTracking()
@@ -46,7 +46,7 @@ public class OrderRepository : BaseRepository<Order>, IOrderRepository
         return await base.GetPagedAsync(query, pagedParams.PageNumber, pagedParams.PageSize, sort, order);
     }
 
-    private static IQueryable<Order> ApplyFilters(IQueryable<Order> query, OrderPagedParamsRequest pagedParams)
+    private static IQueryable<Order> ApplyFilters(IQueryable<Order> query, OrderPagedRequest pagedParams)
     {
         if (!string.IsNullOrWhiteSpace(pagedParams.Status))
             query = query.Where(order => order.Status.Name == pagedParams.Status);

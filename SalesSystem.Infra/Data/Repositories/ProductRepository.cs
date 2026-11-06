@@ -12,12 +12,7 @@ public class ProductRepository : BaseRepository<Product>, IProductRepository
     {
         _context = context;
     }
-    public async Task<List<Product>> GetAllAsync()
-    {
-        return await _context.Products.
-            AsNoTracking().
-            ToListAsync();
-    }
+
 
     public async Task<Product?> GetByIdAsync(int id)
     {
@@ -45,7 +40,7 @@ public class ProductRepository : BaseRepository<Product>, IProductRepository
             .ToListAsync();
     }
 
-    public async Task<(IEnumerable<Product> products, int totalCount)> GetPagedAsync(Guid userId, ProductPagedParamsRequest pagedParams)
+    public async Task<(IEnumerable<Product> products, int totalCount)> GetPagedAsync(ProductPagedRequest pagedParams)
     {
         IQueryable<Product> query = _context.Products
             .AsNoTracking();
@@ -58,7 +53,7 @@ public class ProductRepository : BaseRepository<Product>, IProductRepository
         return await base.GetPagedAsync(query, pagedParams.PageNumber, pagedParams.PageSize, sort, order);
     }
 
-    private static IQueryable<Product> ApplyFilters(IQueryable<Product> query, ProductPagedParamsRequest pagedParams)
+    private static IQueryable<Product> ApplyFilters(IQueryable<Product> query, ProductPagedRequest pagedParams)
     {
         if (!string.IsNullOrWhiteSpace(pagedParams.Search))
             query = query.Where(product => product.Name.Contains(pagedParams.Search));
