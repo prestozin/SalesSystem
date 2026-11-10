@@ -2,18 +2,15 @@
 using SalesSystem.Core.Entities;
 using SalesSystem.Core.Interfaces;
 using SalesSystem.Core.Shared;
-using SalesSystem.Infra.Data;
 
 namespace SalesSystem.Infra.Data.Repositories;
 
 public class OrderRepository : BaseRepository<Order>, IOrderRepository
 {
-    private readonly ApplicationDbContext _context;
-
-    public OrderRepository(ApplicationDbContext context)
+    public OrderRepository(ApplicationDbContext context) : base(context)
     {
-        _context = context;
     }
+
     public async Task CreateAsync(Order order, List<Product> products)
     {
         await using var transaction = await _context.Database.BeginTransactionAsync();
@@ -40,10 +37,9 @@ public class OrderRepository : BaseRepository<Order>, IOrderRepository
 
         query = ApplyFilters(query, pagedParams);
 
-        string sort = GetSortProperty(pagedParams.Sort);
-        string order = pagedParams.Order ?? "desc";
+        pagedParams.Sort = GetSortProperty(pagedParams.Sort);
 
-        return await base.GetPagedAsync(query, pagedParams.PageNumber, pagedParams.PageSize, sort, order);
+        return await base.GetPagedAsync(query, pagedParams);
     }
 
     private static IQueryable<Order> ApplyFilters(IQueryable<Order> query, OrderPagedRequest pagedParams)
